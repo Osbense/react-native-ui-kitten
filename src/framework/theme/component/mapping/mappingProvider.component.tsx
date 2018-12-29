@@ -1,6 +1,7 @@
 import React from 'react';
 import MappingContext from './mappingContext';
 import { ThemeMappingType } from './type';
+import { StatesMap } from './statesMap';
 
 export interface Props {
   mapping: ThemeMappingType;
@@ -8,6 +9,11 @@ export interface Props {
 }
 
 export class MappingProvider extends React.PureComponent<Props> {
+
+  componentWillMount() {
+    const statesMap: StatesMap = new StatesMap(this.props.mapping);
+    console.log(statesMap.get('checked.default.Radio.error'));
+  }
 
   render() {
     return (
