@@ -12,7 +12,7 @@ export class MappingProvider extends React.PureComponent<Props> {
 
   componentWillMount() {
     const statesMap: StatesMap = new StatesMap(this.props.mapping);
-    console.log(statesMap.get('checked.default.Radio.error'));
+    // console.log(statesMap.get('checked.default.Radio.error'));
   }
 
   render() {

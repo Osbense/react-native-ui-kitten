@@ -23,7 +23,7 @@ export class StatesPreprocessor {
   }
 
   public calculateState(): Map<string, object> {
-    let componentsStatesMap: Map<string, object> = new Map();
+    const componentsStatesMap: Map<string, object> = new Map();
     Object.keys(this.mapping).forEach((componentName: string) => {
       Object.keys(this.mapping[componentName].appearance)
         .forEach((componentAppearance: string) => {
@@ -35,7 +35,7 @@ export class StatesPreprocessor {
           this.getVariantStates(
             this.mapping[componentName].appearance[componentAppearance],
             componentName,
-            componentAppearance
+            componentAppearance,
           ).forEach(item => componentsStatesMap.set(item.state, item.styles));
         });
     });
@@ -45,7 +45,7 @@ export class StatesPreprocessor {
   private getDefaultStates(obj: MappingStateObject,
                            componentName: string,
                            componentAppearance: string): StateStyleObject[] {
-    let stateStyles: StateStyleObject[] = [];
+    const stateStyles: StateStyleObject[] = [];
     if (this.hasAppearanceMappingState(obj)) {
       const states = obj.mapping.state;
       Object.keys(states).forEach((stateName: string) => {
@@ -63,7 +63,7 @@ export class StatesPreprocessor {
   private getVariantStates(obj: MappingStateObject,
                            componentName: string,
                            componentAppearance: string): StateStyleObject[] {
-    let stateStyles: StateStyleObject[] = [];
+    const stateStyles: StateStyleObject[] = [];
     if (this.hasAppearanceVariant(obj)) {
       Object.keys(obj[this.VARIANT_KEY_NAME])
         .forEach((appearanceVariant: string) => {
@@ -74,7 +74,7 @@ export class StatesPreprocessor {
                 stateStyles.push({
                   state: `${componentName}.${componentAppearance}.${variantName}.${stateName}`,
                   styles: variant[variantName].mapping.state[stateName],
-                })
+                });
               });
             }
           });

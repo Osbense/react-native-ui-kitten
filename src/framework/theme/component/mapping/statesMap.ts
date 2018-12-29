@@ -25,7 +25,7 @@ export class StatesMap extends Map<string, object> {
   }
 
   private compareStringArrays(arr1: string[], arr2: string[]): boolean {
-    return arr1.length === arr2.length && arr1.reduce((a, b) => a && arr2.includes(b), true)
+    return arr1.length === arr2.length && arr1.reduce((a, b) => a && arr2.includes(b), true);
   }
 
   private splitSearchString(value: string): string[] {
